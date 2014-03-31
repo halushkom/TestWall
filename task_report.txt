@@ -1,0 +1,22 @@
+		Task definition:  
+	Program is console application that verifies if wall of some configuration can be constructed from some set of bricks. By the task definition, length of brick should be no more 8, and a hight equals 1.  A configuration of the wall may be any, but it should be described by a matrix that is composed of “0” and “1”.If the wall can be built from a given set of bricks, then program output is “Yes”, if it is not - “No”.
+
+		Design specification: 
+
+	The task is divided into subtasks. First we have to read input data from the command line or from a text file , to process it to create two lists - a set of bricks and a set of solid parts of the wall to be filled of bricks. To read input data as in inputData() method apply the reference variable class InputStream as parameter of this method. This step allows you to receive an input data stream from both command line and from a text file.
+	Directly for solving the main task I use brute-force search  algorithm. I check all possible variation recursively , and if the array that has elements wall contains zeros , then the wall was built and the method returns true .
+	Before finally finding a solution I use several checks to simplify a search of the solution. First I check whether I have enough given set of bricks to fill the walls, because the bricks may not be enough , and then the program immediately displays a "No". To simplify a basic search algorithm (brute-force), I use another helper placeMatchBricks() method. This method try to find parts the wall and exactly length bricks and method use those bricks to build a wall immediately, thus reducing the scope of the search of the basic algorithm.
+How to test of the program:
+	For the testing of code you have to have either input data text file or to enter of a data by command line. It is text file should to create follow type:
+6 3
+101101
+111111
+111111
+3
+1 4
+2 6
+3 1
+Line 1:  This is columns and rows of wall matrix
+Line 2-4: The configuration of wall. “1” - this is unit of wall, that is need to cover. Zero “0” is void in the wall.
+Line 5: Number of a sorts (types) of bricks (Length of a brick must be no more then 8).
+Line 6-8: First digit in line is length of brick, second digit is number of bricks of the concrete type.
